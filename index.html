@@ -22,22 +22,28 @@
   <div class="container">
     <!-- Timeblocks go here -->
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
 
-      for (var i = 0; i < 8; i++) {
+      for (var i = 0; i < 9; i++) {
 
-        var hoursEL = $("<input>");
-        hoursEL.addClass("hours");
-        hoursEL.attr("data-hour", i + 9);
-        $(".container").append(hoursEL);
+        var inputEL = $("<input>");
+        inputEL.addClass("row");
+        inputEL.attr("data-hour", i + 9);
+        $(".container").append(inputEL);
         console.log(i + 9);
       }
     });
 
+    var today = moment().format("MMM Do YY");
+    $("#currentDay").text(today);
+
+    console.log(today);
+
   </script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 </body>
 
