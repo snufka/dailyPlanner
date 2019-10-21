@@ -32,8 +32,10 @@
     // if hour is past - no changes can be made - current color red - futer hour editable 
     // we need to conect the hour in the planner to the current time by moment
     // once a meeting was created in the proper hour the meeting will be save in the local storeg 
-
-
+    // calender should be compered to today + calender hour 
+    var inputEL = $('<input>');
+    var a = $("<button>");
+    var meetingsArr = [];
 
     $(document).ready(function () {
 
@@ -50,14 +52,19 @@
         a.addClass("saveBtn");
         a.text("save");
         $(".container").append(a);
+        a.on("click", function (event) {
+
+          event.preventDefault();
+          console.log("clicked");
+          var meeting = inputEL.val().trim();
+          meetingsArr.push(meeting);
+          console.log(meetingsArr);
+
+        });
 
 
       }
-      a.on("click", function (event) {
 
-        event.preventDefault();
-        console.log("clicked");
-      });
     });
 
     var today = moment().format('LL');
