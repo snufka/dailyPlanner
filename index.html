@@ -48,10 +48,16 @@
 
         var a = $("<button>");
         a.addClass("saveBtn");
-        a.attr("data-clicked", "save")
         a.text("save");
         $(".container").append(a);
+
+
       }
+      a.on("click", function (event) {
+
+        event.preventDefault();
+        console.log("clicked");
+      });
     });
 
     var today = moment().format('LL');
@@ -59,11 +65,7 @@
 
     console.log(today);
 
-    a.on("click", function (event) {
 
-      event.preventDefault();
-      console.log("clicked");
-    });
 
         // This line will grab the text from the input box
         //var movie = $("#movie-input").val().trim();
