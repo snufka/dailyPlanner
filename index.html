@@ -32,8 +32,8 @@
     // if hour is past - no changes can be made - current color red - futer hour editable 
     // we need to conect the hour in the planner to the current time by moment
     // once a meeting was created in the proper hour the meeting will be save in the local storeg 
-    // calender should be compered to today + calender hour 
-    var inputEL = $('<input>');
+    // star and end for each hour in the planer and in th current time is inside that time than he can write in it
+    // comparing the hour 
     var a = $("<button>");
     var meetingsArr = [];
 
@@ -41,23 +41,32 @@
 
       for (var i = 0; i < 9; i++) {
 
+        var div = $("<div>");
 
         var inputEL = $('<input>');
         inputEL.addClass("row");
-        inputEL.attr("data-hour", i + 9);
-        $(".container").append(inputEL);
+        div.attr("data-hour", i + 9);
+        div.append(inputEL);
         console.log(i + 9);
 
         var a = $("<button>");
         a.addClass("saveBtn");
+
         a.text("save");
-        $(".container").append(a);
+        div.append(a);
+        $(".container").append(div);
         a.on("click", function (event) {
+          console.log(event.target);
+          console.log(event.target.parentNode);
 
           event.preventDefault();
           console.log("clicked");
+          console.log(inputEL);
           var meeting = inputEL.val().trim();
-          meetingsArr.push(meeting);
+          console.log('test', meeting);
+          // $("input").text(JSON.stringify(meeting));
+          meetingsArr.push(meeting[i]);
+          console.log(meeting[i]);
           console.log(meetingsArr);
 
         });
