@@ -50,8 +50,13 @@
         if (nowHour < $(".data-hour")) {
           inputEL.addClass("past");
           console.log("past");
-        }
 
+        }
+        else if (nowHour < $(".data-hour")) {
+          inputEL.addClass("present");
+          console.log("present")
+
+        }
         else {
           console.log("futuer");
           inputEL.addClass("future");
