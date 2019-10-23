@@ -39,11 +39,25 @@
 
     $(document).ready(function () {
 
+
+
       for (var i = 0; i < 9; i++) {
 
         var div = $("<div>");
-
         var inputEL = $('<input>');
+        var nowHour = (moment().format('H'));
+
+        if (nowHour < $(".data-hour")) {
+          inputEL.addClass("past");
+          console.log("past");
+        }
+
+        else {
+          console.log("futuer");
+          inputEL.addClass("future");
+        }
+
+
         inputEL.addClass("row");
         div.attr("data-hour", i + 9);
         div.append(inputEL);
@@ -66,8 +80,11 @@
           console.log('test', meeting);
           // $("input").text(JSON.stringify(meeting));
           meetingsArr.push(meeting[i]);
-          console.log(meeting[i]);
-          console.log(meetingsArr);
+
+
+
+
+
 
         });
 
@@ -80,6 +97,7 @@
     $("#currentDay").text(today);
 
     console.log(today);
+    console.log(moment().format('H'));
 
 
 
