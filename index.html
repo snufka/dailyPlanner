@@ -47,12 +47,20 @@
         var inputEL = $('<input>');
         var nowHour = (moment().format('H'));
 
-        if (nowHour < $(".data-hour")) {
+
+        inputEL.addClass("row");
+        div.attr("data-hour", i + 9);
+        div.append(inputEL);
+
+        var slotHour = i + 9;
+        console.log(slotHour);
+
+
+        if (nowHour > slotHour) {
           inputEL.addClass("past");
           console.log("past");
 
-        }
-        else if (nowHour = $(".data-hour")) {
+        } else if (nowHour === slotHour) {
           inputEL.addClass("present");
           console.log("present")
 
@@ -63,10 +71,6 @@
         }
 
 
-        inputEL.addClass("row");
-        div.attr("data-hour", i + 9);
-        div.append(inputEL);
-        console.log(i + 9);
 
         var a = $("<button>");
         a.addClass("saveBtn");
