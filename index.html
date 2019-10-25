@@ -36,23 +36,35 @@
     // comparing the hour 
     var a = $("<button>");
     var meetingsArr = [];
+    //var hourTextEL = localStorage.setItem("meeting");
+    //var slotHourEL = localStorage.setItem("slotHour");
+
 
     $(document).ready(function () {
-
+      //preventDefault();
 
 
       for (var i = 0; i < 9; i++) {
 
         var div = $("<div>");
+        var hourDispaly = $("<h1>");
         var inputEL = $('<input>');
         var nowHour = (moment().format('H'));
+        var inputVal = $("input[type=text]:checked").val();
+
+        hourDispaly.text(slotHour);
+        hourDispaly.addClass("time-block");
+        div.append(hourDispaly)
 
 
         inputEL.addClass("row");
         div.attr("data-hour", i + 9);
         div.append(inputEL);
 
+
+
         var slotHour = i + 9;
+
         console.log(slotHour);
 
 
@@ -72,26 +84,31 @@
 
 
 
-        var a = $("<button>");
+        var a = $('<input type="submit" value="Save">');
         a.addClass("saveBtn");
 
-        a.text("save");
         div.append(a);
         $(".container").append(div);
         a.on("click", function (event) {
           console.log(event.target);
           console.log(event.target.parentNode);
 
+          console.log(inputVal);
+
           event.preventDefault();
           console.log("clicked");
           console.log(inputEL);
+
           var meeting = inputEL.val().trim();
+
+          // inputEL.text(JSON.stringify(meeting));
           console.log('test', meeting);
-          // $("input").text(JSON.stringify(meeting));
+
           meetingsArr.push(meeting[i]);
 
 
-
+          localStorage.setItem("text", meeting);
+          //slocalStorage.setItem("hourSlot", hourDispaly);
 
 
 
