@@ -47,32 +47,30 @@
       for (var i = 0; i < 9; i++) {
 
         var div = $("<div>");
-        var hourDispaly = $("<h1>");
+        var hourDispaly = $("<button>");
         var inputEL = $('<input>');
         var nowHour = (moment().format('H'));
-        var inputVal = $("input[type=text]:checked").val();
+        var inputVal = inputEL.val();
+        var slotHour = i + 9;
 
-        hourDispaly.text(slotHour);
-        hourDispaly.addClass("time-block");
+        hourDispaly.text(slotHour + ":00");
+        hourDispaly.addClass("hour");
         div.append(hourDispaly)
 
 
-        inputEL.addClass("row");
-        div.attr("data-hour", i + 9);
+        div.addClass("row");
+        div.attr("id", i + 9);
         div.append(inputEL);
 
 
 
-        var slotHour = i + 9;
-
-        console.log(slotHour);
 
 
         if (nowHour > slotHour) {
           inputEL.addClass("past");
           console.log("past");
 
-        } else if (nowHour === slotHour) {
+        } else if (nowHour == slotHour) {
           inputEL.addClass("present");
           console.log("present")
 
