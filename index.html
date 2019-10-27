@@ -59,7 +59,7 @@
 
 
         div.addClass("row");
-        inputEL.attr("id", i + 9);
+        inputEL.attr("id", "meeting-input");
         div.append(inputEL);
         var meeting = inputEL.val().trim();
 
@@ -95,8 +95,8 @@
         a.on("click", function (event) {
           console.log(event.target.textContent);
           console.log(event.target.parentNode);
-
-          console.log(inputVal);
+          var meeting = $('#meeting-input').val();
+          console.log(meeting);
 
           event.preventDefault();
           console.log("clicked");
