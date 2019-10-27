@@ -53,7 +53,6 @@
         var inputVal = inputEL.val();
         var slotHour = i + 9;
 
-
         hourDispaly.text(slotHour + ":00");
         hourDispaly.addClass("hour");
         div.append(hourDispaly)
@@ -62,6 +61,8 @@
         div.addClass("row");
         inputEL.attr("id", i + 9);
         div.append(inputEL);
+        var meeting = inputEL.val().trim();
+
 
 
 
@@ -73,7 +74,6 @@
           inputEL.addClass("past");
           console.log("past");
 
-
         } else if (nowHour == slotHour) {
           inputEL.addClass("present");
           console.log("present")
@@ -82,26 +82,21 @@
         else {
           console.log("futuer");
           inputEL.addClass("future");
-          map = [];
-          $(".future").each(function () {
-            map[$(this).attr("id")] = $(this).val();
-            console.log(this);
-          });
-
         }
 
 
 
         var a = $('<input type="submit" value="Save">');
         a.addClass("saveBtn");
-        div.append(a);
 
+        div.append(a);
         $(".container").append(div);
+
         a.on("click", function (event) {
-          console.log(event.target);
+          console.log(event.target.textContent);
           console.log(event.target.parentNode);
 
-          console.log();
+          console.log(inputVal);
 
           event.preventDefault();
           console.log("clicked");
@@ -110,7 +105,7 @@
 
 
           // inputEL.text(JSON.stringify(meeting));
-          // console.log('test', meeting);
+          console.log('test', meeting);
 
           meetingsArr.push(meeting[i]);
 
