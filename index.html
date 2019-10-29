@@ -59,13 +59,9 @@
 
 
         div.addClass("row");
-        inputEL.attr("id", i + 9);
+        inputEL.attr("id", slotHour);
         div.append(inputEL);
         var meeting = inputEL.val().trim();
-
-
-
-
 
 
 
@@ -85,37 +81,37 @@
         }
 
 
-
-        var a = $('<input type="submit" value="Save">');
-        a.addClass("saveBtn");
-
-        div.append(a);
-        $(".container").append(div);
-
-        a.on("click", function (event) {
-          console.log(event.target.textContent);
-          console.log(event.target.parentNode);
-          var meeting = $('#meeting-input').val();
-          console.log(meeting);
-
+        function onClick(event) {
           event.preventDefault();
-          console.log("clicked");
-          console.log(inputEL);
+
+          var idHour = event.target.id
+
+
+          var meeting = $('#' + idHour).val()
+
 
 
 
           // inputEL.text(JSON.stringify(meeting));
-          console.log('test', meeting);
 
           meetingsArr.push(meeting[i]);
 
 
-          localStorage.setItem("text", meeting);
+          localStorage.setItem(idHour, meeting);
           //slocalStorage.setItem("hourSlot", hourDispaly);
 
+        }
 
 
-        });
+        var a = $('<input type="submit" value="Save">');
+
+        a.addClass("saveBtn");
+        a.attr("id", slotHour);
+
+        div.append(a);
+        $(".container").append(div);
+
+        a.on("click", onClick);
 
 
       }
